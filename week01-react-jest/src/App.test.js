@@ -26,6 +26,7 @@ describe('jest test', function () {
 		const wrapper = shallow(<App />);
 		const nineSign = <p className="App-intro">Nine: 9</p>;
 		wrapper.find('button.elf').simulate('click');
+		elfDebugEnzyme.getLast(wrapper,'p', true);
 		expect(wrapper.contains(nineSign)).toEqual(true);
 	});
 
