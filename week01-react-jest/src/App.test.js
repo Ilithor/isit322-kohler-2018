@@ -7,27 +7,25 @@ import ElfDebugEnzyme from './ElfDebugEnzyme';
 configure({ adapter: new Adapter() });
 const elfDebugEnzyme = new ElfDebugEnzyme(true, 'App.test.js');
 
-describe('jest test', function () {
+describe('jest test', function() {
+    it('renders without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<App />, div);
+        ReactDOM.unmountComponentAtNode(div);
+    });
 
-	it('renders without crashing', () => {
-		const div = document.createElement('div');
-		ReactDOM.render(<App />, div);
-		ReactDOM.unmountComponentAtNode(div);
-	});
-	
-	it('renders and reads H1 text', () => {
-		const wrapper = shallow(<App />);
-		const welcome = <h1 className='App-title'>Welcome to React</h1>;
-		elfDebugEnzyme.getFirst(wrapper, 'h1', true);
-		expect(wrapper.contains(welcome)).toEqual(true);
-	});
+    it('renders and reads H1 text', () => {
+        const wrapper = shallow(<App />);
+        const welcome = <h1 className="App-title">Welcome to React</h1>;
+        elfDebugEnzyme.getFirst(wrapper, 'h1', true);
+        expect(wrapper.contains(welcome)).toEqual(true);
+    });
 
-	it('renders button click message', () => {
-		const wrapper = shallow(<App />);
-		const nineSign = <p className="App-intro">Nine: 9</p>;
-		wrapper.find('button.elf').simulate('click');
-		elfDebugEnzyme.getLast(wrapper,'p', true);
-		expect(wrapper.contains(nineSign)).toEqual(true);
-	});
-
+    it('renders button click message', () => {
+        const wrapper = shallow(<App />);
+        const nineSign = <p className="App-intro">Nine: 9</p>;
+        wrapper.find('button.elf').simulate('click');
+        elfDebugEnzyme.getLast(wrapper, 'p', true);
+        expect(wrapper.contains(nineSign)).toEqual(true);
+    });
 });
