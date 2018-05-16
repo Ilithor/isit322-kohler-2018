@@ -35,12 +35,21 @@ class GitUser extends Component {
         return (
             <div className="App-intro">
                 <p>
-                    <img src={body.avatar_url}/>
+                    <img src={body.avatar_url} alt=''/>
                 </p>
                 <p>
-                    login: {JSON.stringify(body.login)}
+                    login: <input type='text' value={body.login} />
                 </p>
-                <button onClick={this.queryServer}>Query Git API</button>
+                <p>
+                    Url: <input type='text' value={body.url} />
+                </p>
+                <p>
+                    HTML Url: <input type='text' value={body.html_url} />
+                </p>
+                <p>
+                    Followers URL: <input type='text' value={body.followers_url} />
+                </p>
+                <button id='gitButton' onClick={this.queryServer}>Query Git API</button>
             </div>
         );
     }
