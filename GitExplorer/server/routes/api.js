@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 /* Set up a route called foo. */
 router.get('/foo', function(request, response) {
