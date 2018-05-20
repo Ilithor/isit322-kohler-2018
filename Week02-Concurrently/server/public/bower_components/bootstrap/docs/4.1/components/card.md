@@ -131,7 +131,7 @@ Mix and match multiple content types to create the card you need, or throw every
 {% endcapture %}
 {% include example.html content=example %}
 
-### Header and footer
+### ElfHeader and footer
 
 Add an optional header and/or footer within a card.
 
@@ -403,7 +403,7 @@ Use [text and background utilities]({{ site.baseurl }}/docs/{{ site.docs_version
 {% capture example %}
 {% for color in site.data.theme-colors %}
 <div class="card{% unless color.name == "light" %} text-white{% endunless %} bg-{{ color.name }} mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
+  <div class="card-header">ElfHeader</div>
   <div class="card-body">
     <h5 class="card-title">{{ color.name | capitalize }} card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -421,7 +421,7 @@ Use [border utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities
 {% capture example %}
 {% for color in site.data.theme-colors %}
 <div class="card border-{{ color.name }} mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
+  <div class="card-header">ElfHeader</div>
   <div class="card-body{% unless color.name == "light" %} text-{{ color.name }}{% endunless %}">
     <h5 class="card-title">{{ color.name | capitalize }} card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -436,7 +436,7 @@ You can also change the borders on the card header and footer as needed, and eve
 
 {% capture example %}
 <div class="card border-success mb-3" style="max-width: 18rem;">
-  <div class="card-header bg-transparent border-success">Header</div>
+  <div class="card-header bg-transparent border-success">ElfHeader</div>
   <div class="card-body text-success">
     <h5 class="card-title">Success card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
