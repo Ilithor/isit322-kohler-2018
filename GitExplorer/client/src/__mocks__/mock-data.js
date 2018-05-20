@@ -1,4 +1,4 @@
-const getData = (url) => {
+const getData = url => {
     switch (url) {
         case '/api/foo':
             return {
@@ -17,7 +17,7 @@ const getData = (url) => {
             };
 
         default:
-            return {}
+            return {};
     }
 };
 

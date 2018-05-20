@@ -7,11 +7,10 @@ import appInit from '../app-init';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('My GitUser tests', function () {
-
+describe('My GitUser tests', function() {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<GitUser appInit={appInit}/>, div);
+        ReactDOM.render(<GitUser appInit={appInit} />, div);
         ReactDOM.unmountComponentAtNode(div);
     });
 });

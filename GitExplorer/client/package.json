@@ -13,8 +13,9 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "DEBUG=firebase-express:server nodemon ./bin/www",
+    "build": "node_modules/.bin/webpack --watch",
+    "lint": "./node_modules/.bin/eslint .",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
