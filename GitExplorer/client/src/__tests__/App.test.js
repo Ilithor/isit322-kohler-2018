@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
-import Header from '../components/Header';
+import ElfHeader from '../components/ElfHeader';
 import {shallow} from 'enzyme';
 import * as Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -17,7 +17,7 @@ describe('My App tests', function () {
     });
 
     it('renders and reads H1 text', () => {
-        const wrapper = shallow(<Header/>);
+        const wrapper = shallow(<ElfHeader/>);
         const welcome = <h2>Welcome to React</h2>;
         expect(wrapper.contains(welcome)).toEqual(true);
     });
