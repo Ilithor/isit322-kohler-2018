@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import logo from '../images/Tree-of-Life_Flower-of-Life_Stage.svg';
 import 'whatwg-fetch';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import { MenuItem } from 'material-ui';
 
 class ElfHeader extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false
+        };
+    }
+
+    handleToggle = () => this.setState({ open: !this.state.open });
+
     static propTypes = {
         file: PropTypes.string,
         status: PropTypes.string,
@@ -13,24 +24,36 @@ class ElfHeader extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h2>Welcome to React</h2>
-                    <div>
-                        <ul>
-                            <li>
-                                <Link to="/">Git User</Link>
-                            </li>
-                            <li>
-                                <Link to="/foobar/bar">Micro</Link>
-                            </li>
-                            <li>
-                                <Link to="/api/foo">ApiFoo</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </header>
+            <div>
+                <AppBar
+                    title="GitExplorer"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    onLeftIconButtonClick={this.handleToggle}
+                />
+                <Drawer
+                    docked={false}
+                    width={200}
+                    open={this.state.open}
+                    onRequestChange={this.handleToggle}
+                >
+                    <AppBar title="Git Explorer" />
+
+                    <MenuItem
+                        primaryText="Git User"
+                        containerElement={<Link to="/" />}
+                        onClick={this.handleToggle}
+                    />
+                    <MenuItem
+                        primaryText="FooApi"
+                        containerElement={<Link to="/api/foo" />}
+                        onClick={this.handleToggle}
+                    />
+                    <MenuItem
+                        primaryText="Micro01"
+                        containerElement={<Link to="/foobar/bar" />}
+                        onClick={this.handleToggle}
+                    />
+                </Drawer>
             </div>
         );
     }
