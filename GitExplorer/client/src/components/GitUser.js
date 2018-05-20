@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './elf-styles';
+import { FontIcon, RaisedButton } from 'material-ui';
+import { red500 } from 'material-ui/styles/colors';
 
 class GitUser extends Component {
     constructor(props) {
@@ -52,9 +55,18 @@ class GitUser extends Component {
                     Followers URL:{' '}
                     <input type="text" value={body.followers_url} />
                 </p>
-                <button id="gitButton" onClick={this.queryServer}>
-                    Query Git API
-                </button>
+                <RaisedButton
+                    label="Query Git User"
+                    labelPosition="before"
+                    primary={true}
+                    icon={
+                        <FontIcon class="material-icons" color={red500}>
+                            rss_feed
+                        </FontIcon>
+                    }
+                    style={styles.button}
+                    onClick={this.queryServer}
+                />
             </div>
         );
     }
