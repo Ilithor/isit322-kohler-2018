@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import logo from '../images/Tree-of-Life_Flower-of-Life_Stage.svg';
 import 'whatwg-fetch';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class ElfHeader extends Component {
-
-    static propTypes={
+    static propTypes = {
         file: PropTypes.string,
         status: PropTypes.string,
         result: PropTypes.string
@@ -16,7 +15,7 @@ class ElfHeader extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
+                    <img src={logo} className="App-logo" alt="logo" />
                     <h2>Welcome to React</h2>
                     <div>
                         <ul>
