@@ -8,12 +8,31 @@ import GitUser from './GitUser';
 import PropTypes from 'prop-types';
 import appInit from '../app-init';
 import { BrowserRouter, Route } from 'react-router-dom';
+import ShowNewGist from './ShowNewGist';
 
 class App extends Component {
     static propTypes = {
         file: PropTypes.string,
         status: PropTypes.string,
         result: PropTypes.string
+    };
+
+    queryServer = () => {
+        const that = this;
+        fetch('/fetchGistList')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                console.log('parsed json', json);
+                that.setState(() => json);
+            })
+            .catch(function(ex) {
+                console.log(
+                    'parsing failed, URL bad, network down, or similar',
+                    ex
+                );
+            });
     };
 
     render() {
@@ -40,6 +59,13 @@ class App extends Component {
                         path="/api/foo"
                         render={props => (
                             <ApiFoo {...props} appInit={appInit} />
+                        )}
+                    />
+                    <Route
+                        exact
+                        path="/fetchGistList"
+                        render={props => (
+                            <ShowNewGist {...props} appInit={appInit} />
                         )}
                     />
                 </div>
