@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var api = require('./routes/api');
 var git_api = require('./routes/git-api');
 var foobar = require('./routes/foobar');
+var gists = require('./routes/gists');
 var app = express();
 
 // view engine setup
@@ -26,6 +27,7 @@ app.use('/users', usersRouter);
 app.use('/api', api);
 app.use('/git-api', git_api);
 app.use('/foobar', foobar);
+app.use('/gists', gists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) { 'use strict';

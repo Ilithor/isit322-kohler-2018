@@ -26,7 +26,7 @@ class ElfHeader extends Component {
         return (
             <div>
                 <AppBar
-                    title="GitExplorer"
+                    title="GitExplorer!"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonClick={this.handleToggle}
                 />
@@ -36,7 +36,7 @@ class ElfHeader extends Component {
                     open={this.state.open}
                     onRequestChange={this.handleToggle}
                 >
-                    <AppBar title="Git Explorer" />
+                    <AppBar title="menu" />
 
                     <MenuItem
                         primaryText="Git User"
@@ -55,7 +55,7 @@ class ElfHeader extends Component {
                     />
                     <MenuItem
                         primaryText="New Gist"
-                        containerElement={<Link to="/fetchGistList" />}
+                        containerElement={<Link to="/gists/get-basic-list" />}
                         onClick={this.handleToggle}
                         />
                 </Drawer>

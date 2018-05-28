@@ -1,33 +1,60 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import styles from './elf-styles';
-import { FontIcon, RaisedButton } from 'material-ui';
-import { red500 } from 'material-ui/styles/colors';
+import {RaisedButton} from 'material-ui';
+import button from './elf-styles';
+import GistDisplay from './gist/components/gistDisplay';
+
+let i = 0;
 
 class ShowNewGist extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            body: props.appInit.result
+            gistList: props.appInit.result+''
         };
     }
+
     static propTypes = {
         appInit: PropTypes.shape({
             result: PropTypes.string
         })
     };
 
-    queryServer = () => {
+    showGist = () => {
         const that = this;
-        fetch('/fetchGistList')
-            .then(function(response) {
+        fetch('/gists/get-basic-list')
+            .then(function (response) {
                 return response.json();
             })
-            .then(function(json) {
+            .then(function (json) {
                 console.log('parsed json', json);
-                that.setState(() => json);
+                let newState = {
+                    gistList:json
+                };
+                that.setState(() => newState);
             })
-            .catch(function(ex) {
+            .catch(function (ex) {
+                console.log(
+                    'parsing failed, URL bad, network down, or similar',
+                    ex
+                );
+            });
+    };
+
+    newGist = () => {
+        const that = this;
+        fetch('/gists/add-basic-list')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                console.log('parsed json', json);
+                let newState = {
+                    gistList: json
+                };
+                that.setState(() => newState);
+            })
+            .catch(function (ex) {
                 console.log(
                     'parsing failed, URL bad, network down, or similar',
                     ex
@@ -36,39 +63,45 @@ class ShowNewGist extends Component {
     };
 
     render() {
-        let { body } = this.state;
-        return (
-            <div className="App-intro">
-                <p>
-                    <img src={body.avatar_url} alt="" />
-                </p>
-                <p>
-                    login: <input type="text" value={body.login} />
-                </p>
-                <p>
-                    Url: <input type="text" value={body.url} />
-                </p>
-                <p>
-                    HTML Url: <input type="text" value={body.html_url} />
-                </p>
-                <p>
-                    Followers URL:{' '}
-                    <input type="text" value={body.followers_url} />
-                </p>
-                <RaisedButton
-                    label="Query Git User"
-                    labelPosition="before"
-                    primary={true}
-                    icon={
-                        <FontIcon class="material-icons" color={red500}>
-                            rss_feed
-                        </FontIcon>
-                    }
-                    style={styles.button}
-                    onClick={this.queryServer}
-                />
-            </div>
-        );
+        console.log(this.state);
+        let {gistList} = this.state;
+        let displayContent;
+        if (gistList) {
+            displayContent = (
+                <div>
+                    <h4>ShowNewGist</h4>
+                    {/*<pre>*/}
+                        {/*{JSON.stringify(gistList, null, 4)}*/}
+                    {/*</pre>*/}
+                    {gistList.result && <GistDisplay gist={gistList.result[i]}/>}
+                </div>
+            );
+        } else {
+            displayContent =
+                <div>
+                    <h4>ShowNewGist</h4><h1>WOAAAHHH</h1> <p>There was no valid gist data returned!</p></div>;
+        }
+        return <div className={'App-intro'}>
+            <RaisedButton
+                style={button}
+                id="showGist"
+                onClick={(e) => this.showGist('showGist', e)}
+                //disabled={!this.props.gistCanIterate}
+                secondary={true}
+            >
+                Display
+            </RaisedButton>
+            <RaisedButton
+                style={button}
+                id="nextGist"
+                onClick={(e) => this.newGist('nextGist', e)}
+                secondary={true}
+            >
+                Next
+            </RaisedButton>
+            {displayContent}
+        </div>
+
     }
 }
 
