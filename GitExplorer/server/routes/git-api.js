@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var request = require('request');
+let express = require('express');
+let router = express.Router();
+let request = require('request');
 
 router.get('/user', function (req, res, next) {
     const options = {

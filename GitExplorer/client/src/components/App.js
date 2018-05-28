@@ -17,24 +17,6 @@ class App extends Component {
         result: PropTypes.string
     };
 
-    queryServer = () => {
-        const that = this;
-        fetch('/fetchGistList')
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(json) {
-                console.log('parsed json', json);
-                that.setState(() => json);
-            })
-            .catch(function(ex) {
-                console.log(
-                    'parsing failed, URL bad, network down, or similar',
-                    ex
-                );
-            });
-    };
-
     render() {
         return (
             <BrowserRouter>
@@ -63,7 +45,7 @@ class App extends Component {
                     />
                     <Route
                         exact
-                        path="/fetchGistList"
+                        path="/gists/get-basic-list"
                         render={props => (
                             <ShowNewGist {...props} appInit={appInit} />
                         )}
