@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import PropTypes from 'prop-types';
 import styles from './elf-styles';
-import { FontIcon, RaisedButton } from 'material-ui';
-import { red500 } from 'material-ui/styles/colors';
+import { Button } from '@material-ui/core';
 
 class Micro01 extends Component {
     constructor(props) {
@@ -41,18 +40,15 @@ class Micro01 extends Component {
         return (
             <div className="App-intro">
                 <p>You Rang: {result}</p>
-                <RaisedButton
+                <Button
                     label="Query Micro"
                     labelPosition="before"
-                    primary={true}
-                    icon={
-                        <FontIcon class="material-icons" color={red500}>
-                            rss_feed
-                        </FontIcon>
-                    }
+                    variant="raised"
+                    color="primary"
                     style={styles.button}
-                    onClick={this.queryServer}
-                />
+                    onClick={this.queryServer}>
+                    Micro
+                </Button>
             </div>
         );
     }

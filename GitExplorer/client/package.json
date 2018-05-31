@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:30026",
   "dependencies": {
+    "@material-ui/core": "^1.1.0",
+    "@material-ui/icons": "^1.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "github-api": "^3.0.0",
@@ -18,7 +20,17 @@
     "start": "react-scripts start",
     "build": "node_modules/.bin/webpack --watch",
     "lint": "./node_modules/.bin/eslint .",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest --watch --coverage",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/registerServiceWorker.js",
+      "!**/elf-styles.js",
+      "!src/index.js"
+    ]
   }
 }

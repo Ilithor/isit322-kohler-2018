@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import PropTypes from 'prop-types';
 import styles from './elf-styles';
-import RaisedButton from 'material-ui/RaisedButton';
-import { FontIcon } from 'material-ui';
-import { red500 } from 'material-ui/styles/colors';
+import Button from '@material-ui/core/Button';
 
 class FooApi extends Component {
     constructor(props) {
@@ -49,18 +47,15 @@ class FooApi extends Component {
                 <p>
                     foo: {foo} file: {file} result: {result}
                 </p>
-                <RaisedButton
+                <Button
                     label="Query Git API"
                     labelPosition="before"
-                    primary={true}
-                    icon={
-                        <FontIcon class="material-icons" color={red500}>
-                            rss_feed
-                        </FontIcon>
-                    }
+                    variant="raised"
+                    color="primary"
                     style={styles.button}
-                    onClick={this.queryServer}
-                />
+                    onClick={this.queryServer}>
+                    ApiFoo
+                </Button>
             </div>
         );
     }
