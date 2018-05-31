@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo systemctl enable nrb.service
+sudo systemctl start nrb.service
