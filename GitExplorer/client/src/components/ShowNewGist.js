@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {RaisedButton} from 'material-ui';
+import {Button} from '@material-ui/core';
 import button from './elf-styles';
 import GistDisplay from './gist/components/gistDisplay';
 
@@ -82,7 +82,9 @@ class ShowNewGist extends Component {
                     <h4>ShowNewGist</h4><h1>WOAAAHHH</h1> <p>There was no valid gist data returned!</p></div>;
         }
         return <div className={'App-intro'}>
-            <RaisedButton
+            <Button
+                variant="raised"
+                color="primary"
                 style={button}
                 id="showGist"
                 onClick={(e) => this.showGist('showGist', e)}
@@ -90,15 +92,17 @@ class ShowNewGist extends Component {
                 secondary={true}
             >
                 Display
-            </RaisedButton>
-            <RaisedButton
+            </Button>
+            <Button
+                variant="raised"
+                color="primary"
                 style={button}
                 id="nextGist"
                 onClick={(e) => this.newGist('nextGist', e)}
                 secondary={true}
             >
                 Next
-            </RaisedButton>
+            </Button>
             {displayContent}
         </div>
 
