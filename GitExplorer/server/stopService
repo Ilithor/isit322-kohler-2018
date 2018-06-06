@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo systemctl stop nrb.service
+sudo systemctl disable nrb.service
