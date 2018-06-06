@@ -62,6 +62,28 @@ class ShowNewGist extends Component {
             });
     };
 
+    deleteGist = () => {
+        const that = this;
+        fetch('/gists/delete')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                console.log('parsed json', json);
+                let newState = {
+                    gistList: json
+                };
+                that.setState(() => newState);
+            })
+            .catch(function (ex) {
+                console.log(
+                    'parsing failed, URL bad, network down, or similar',
+                    ex
+                );
+            });
+
+    };
+
     render() {
         console.log(this.state);
         let {gistList} = this.state;
@@ -89,7 +111,7 @@ class ShowNewGist extends Component {
                 id="showGist"
                 onClick={(e) => this.showGist('showGist', e)}
                 //disabled={!this.props.gistCanIterate}
-                secondary={true}
+                secondary="true"
             >
                 Display
             </Button>
@@ -99,9 +121,19 @@ class ShowNewGist extends Component {
                 style={button}
                 id="nextGist"
                 onClick={(e) => this.newGist('nextGist', e)}
-                secondary={true}
+                secondary="true"
             >
                 Next
+            </Button>
+            <Button
+                variant="raised"
+                color="primary"
+                style={button}
+                id="deleteGist"
+                onClick={(e) => this.deleteGist('deleteGist', e)}
+                secondary="true"
+                >
+                Delete
             </Button>
             {displayContent}
         </div>
