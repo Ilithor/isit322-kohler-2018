@@ -6,6 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import { BrowserRouter } from 'react-router-dom';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles/index';
+import Typography from "@material-ui/core/es/Typography/Typography";
 
 configure({ adapter: new Adapter() });
 
