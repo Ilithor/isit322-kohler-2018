@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import '../App.css';
 import Button from '@material-ui/core/Button';
 import Paper from "@material-ui/core/es/Paper/Paper";
+import AddressEdit from "./AddressEdit";
 
 const styles = theme => ({
     button: {
@@ -61,6 +63,16 @@ class Address extends Component {
 
     render() {
         const {classes} = this.props;
+        const editDialog = this.state.editOpen ? (
+            <AddressEdit
+                address={this.props.name}
+                open={this.state.editOpen}
+                addressEdit={this.addressEdit}
+            />
+        ) : (
+            <div/>
+        );
+
         return (
             <div className={classes.container}>
                 <Paper className={classes.rootBar}>
@@ -104,6 +116,14 @@ class Address extends Component {
                         >
                             Delete
                         </Button>
+                        <Button
+                            color="secondary"
+                            variant="raised"
+                            onClick={() => this.setState({editOpen: true})}
+                        >
+                            Edit
+                        </Button>
+                        {editDialog}
                     </div>
                 </Paper>
             </div>
@@ -111,4 +131,4 @@ class Address extends Component {
     }
 }
 
-export default Address;
+export default withStyles(styles)(Address);
