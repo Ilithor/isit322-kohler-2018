@@ -79,4 +79,27 @@ router.get('/get-basic-list', function(request, response) {
     }
 });
 
+router.get('/delete', function(request, response, next) {
+    console.log('DELETE GIST CALLED', request.query);
+    if (!request.query.gistId) {
+        throw new Error('You must pass a gistID when calling delete');
+    }
+    const gistId = request.query.Id;
+    console.log('GIST ID:', gistId);
+    let gitHub = getGitHub();
+    let gist = gitHub.getGist(gistId);
+    console.log('GOT GIST', gist.__apiBase);
+    gist.delete().then(function({data}) {
+        console.log('DELETE PROMISE', data);
+        response.status(200).send({
+            'result': 'success',
+            'gistId': gistId,
+            'data': data
+        });
+    }).catch(function(err) {
+        console.log('Promise Rejected', err);
+        response.status(500).send({'result': err});
+    });
+});
+
 module.exports = router;

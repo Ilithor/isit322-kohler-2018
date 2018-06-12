@@ -11,6 +11,7 @@ class Micro01 extends Component {
             result: props.appInit.result
         };
     }
+
     static propTypes = {
         appInit: PropTypes.shape({
             result: PropTypes.string
