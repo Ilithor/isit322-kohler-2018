@@ -8,7 +8,7 @@ class Micro01 extends Component {
     constructor(props) {
         super();
         this.state = {
-            result: props.appInit.result
+            //result: props.appInit.result
         };
     }
     static propTypes = {
@@ -19,7 +19,7 @@ class Micro01 extends Component {
 
     queryServer = () => {
         const that = this;
-        fetch('/foobar/bar')
+        fetch('exp://192.168.0.125/foobar/bar')
             .then(function(response) {
                 return response.json();
             })
@@ -39,6 +39,7 @@ class Micro01 extends Component {
         let { result } = this.state;
         return (
             <View style={styles.buttonView}>
+                <Text>You Rang: {result}</Text>
                 <Button
                     onPress={this.queryServer}
                     title="Micro"

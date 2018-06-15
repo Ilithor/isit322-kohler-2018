@@ -43,7 +43,6 @@ class Micro01 extends Component {
                 <p>You Rang: {result}</p>
                 <Button
                     label="Query Micro"
-                    labelPosition="before"
                     variant="raised"
                     color="primary"
                     style={styles.button}

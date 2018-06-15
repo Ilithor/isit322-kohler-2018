@@ -19,7 +19,7 @@ class GitUser extends Component {
 
     queryServer = () => {
         const that = this;
-        fetch('/git-api/user')
+        fetch('/git-user/user')
             .then(function (response) {
                 return response.json();
             })
@@ -56,7 +56,6 @@ class GitUser extends Component {
                 </p>
                 <Button
                     label="Query Git User"
-                    labelPosition="before"
                     variant="raised"
                     color="primary"
                     style={styles.button}

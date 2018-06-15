@@ -1,10 +1,7 @@
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import ElfHeader from '../components/ElfHeader';
-import ReactDOM from 'react-dom';
 import Adapter from 'enzyme-adapter-react-16';
-import { BrowserRouter } from 'react-router-dom';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles/index';
 import Typography from "@material-ui/core/es/Typography/Typography";
 
@@ -19,16 +16,8 @@ describe('ElfHeader tests', function() {
     });
 
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(
-            <MuiThemeProvider theme={themeDark}>
-                <BrowserRouter>
-                <ElfHeader />
-                </BrowserRouter>
-            </MuiThemeProvider>,
-            div
-        );
-        ReactDOM.unmountComponentAtNode(div);
+        const wrapper = shallow(<ElfHeader/>);
+        expect(wrapper).to.have.length(1);
     });
 
     it('renders title and tests with containsMatchingElement', () => {

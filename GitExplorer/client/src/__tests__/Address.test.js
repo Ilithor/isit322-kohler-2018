@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import MuiThemeProvider from "@material-ui/core/es/styles/MuiThemeProvider";
 import Address from '../components/Address';
 import {shallow} from "enzyme";
 
@@ -36,9 +34,10 @@ const setAddress = (wrapper) => {
 };
 
 it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<MuiThemeProvider><Address/></MuiThemeProvider>, div);
-    ReactDOM.unmountComponentAtNode(div);
+    it('renders without crashing', () => {
+        const wrapper = shallow(<Address/>);
+        expect(wrapper).to.have.length(1);
+    });
 });
 
 const afterClickFieldTest =(wrapper, finder) => {

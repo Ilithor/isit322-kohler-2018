@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from '../components/App';
 import ElfHeader from '../components/ElfHeader';
 import { shallow } from 'enzyme';
@@ -10,9 +9,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('My App tests', function() {
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
-        ReactDOM.unmountComponentAtNode(div);
+        const wrapper = shallow(<App/>);
+        expect(wrapper).to.have.length(1);
     });
 
     it('renders and reads H1 text', () => {
