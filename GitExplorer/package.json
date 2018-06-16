@@ -10,9 +10,13 @@
     "github-api": "^3.0.0"
   },
   "scripts": {
-    "start": "concurrently 'npm run server' 'npm run client'",
+    "start": "concurrently 'npm run server' 'npm run client' 'npm run microApiFoo' 'npm run microGistLister' 'npm run microGitUser' 'npm run microMicros'",
     "server": "babel-node server/bin/www",
     "client": "babel-node start-client.js",
+    "microApiFoo": "babel-node micros/microApiFoo/bin/www",
+    "microGistLister": "babel-node micros/microGistLister/bin/www",
+    "microGitUser": "babel-node micros/microGitUser/bin/www",
+    "microMicros": "babel-node micros/microMicros/bin/www",
     "lint": "eslint ."
   },
   "devDependencies": {

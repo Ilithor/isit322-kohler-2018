@@ -18,10 +18,10 @@ export default class App extends React.Component {
     render() {
         return (
             <NativeRouter>
-                <View style={styles.gitContainer}>
+                <View style={styles.container}>
                     <ElfHeader/>
-                    <GitUser appInit={appInit}/>
-                    <Micros appInit={appInit}/>
+                    <Route path="/" component={GitUser} appInit={appInit}/>
+                    <Route path="/foobar/bar" component={Micros} appInit={appInit}/>
                 </View>
             </NativeRouter>
         );

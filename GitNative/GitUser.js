@@ -7,7 +7,7 @@ export default class GitUser extends React.Component {
 
     queryServer = () => {
         const that = this;
-        fetch('/git-api/user')
+        fetch('http://192.168.0.125/git-api/user')
             .then(function(response) {
                 return response.json();
             })

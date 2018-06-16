@@ -5,9 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var api = require('./routes/api');
-var git_api = require('./routes/git-api');
+var gitUser = require('./routes/git-user');
 var foobar = require('./routes/foobar');
 var gists = require('./routes/gists');
 var app = express();
@@ -23,9 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/api', api);
-app.use('/git-api', git_api);
+app.use('/git-user', gitUser);
 app.use('/foobar', foobar);
 app.use('/gists', gists);
 

@@ -1,22 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import FooApi from '../components/FooApi';
 import Adapter from 'enzyme-adapter-react-16';
-import {BrowserRouter} from "react-router-dom";
 import {configure, shallow} from "enzyme";
 
 configure({ adapter: new Adapter() });
 
 describe('FooApi tests', function() {
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(
-            <BrowserRouter>
-                <FooApi/>
-            </BrowserRouter>,
-            div
-        );
-        ReactDOM.unmountComponentAtNode(div);
+        const wrapper = shallow(<FooApi/>);
+        expect(wrapper).to.have.length(1);
     });
 
     it('renders text and simulated button results', () => {

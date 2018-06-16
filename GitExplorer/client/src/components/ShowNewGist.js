@@ -41,6 +41,27 @@ class ShowNewGist extends Component {
             });
     };
 
+    nextGist = () => {
+        const that = this;
+        fetch('/gists/next-basic-list')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                console.log('parsed json', json);
+                let newState = {
+                    gistList: json
+                };
+                that.setState(() => newState);
+            })
+            .catch(function(ex) {
+                console.log(
+                    'parsing failed, URL bad, network down, or similar',
+                    ex
+                );
+            });
+    };
+
     newGist = () => {
         const that = this;
         fetch('/gists/add-basic-list')
@@ -124,6 +145,16 @@ class ShowNewGist extends Component {
                 secondary="true"
             >
                 Next
+            </Button>
+            <Button
+                variant="raised"
+                color="primary"
+                style={button}
+                id="nextGist"
+                onClick={(e) => this.newGist('newGist', e)}
+                secondary="true"
+                >
+                New
             </Button>
             <Button
                 variant="raised"
