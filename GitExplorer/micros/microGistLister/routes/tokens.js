@@ -1,4 +1,4 @@
 const tokens = [
-    '1642c1d41882d6f4f3d8615d8e90669b6b66ac4f'
+    '366fb78522be6720f6e3341d28575e48fa5c9f30'
 ];
 module.exports = tokens[0];
